@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1 class="mb-4">Symptom Checker</h1>
+    <p>Choose your eye symptom below to get advice.</p>
+
+    <form id="symptom-form" onsubmit="return false;">
+        <div class="mb-3">
+            <label for="symptom" class="form-label">Select your symptom:</label>
+            <select id="symptom" class="form-select" required>
+                <option value="" disabled selected>Select a symptom</option>
+                <option value="eye_pain">Eye Pain</option>
+                <option value="blurred_vision">Blurred Vision</option>
+                <option value="redness">Redness</option>
+                <option value="dryness">Dryness</option>
+                <option value="floaters">Floaters</option>
+            </select>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="checkSymptom()">Get Advice</button>
+    </form>
+
+    <div id="advice" class="mt-4 p-3 border rounded" style="display:none;"></div>
+</div>
+
+<script>
+    function checkSymptom() {
+        const symptom = document.getElementById('symptom').value;
+        const adviceBox = document.getElementById('advice');
+        let advice = '';
+
+        switch(symptom) {
+            case 'eye_pain':
+                advice = "<strong>Eye Pain:</strong> This is urgent. You should go to the specialist immediately.";
+                break;
+            case 'blurred_vision':
+                advice = "Blurred vision can be caused by many things. If it persists, schedule an eye exam.";
+                break;
+            case 'redness':
+                advice = "Redness may indicate irritation or infection. Avoid rubbing your eyes and consult your optometrist.";
+                break;
+            case 'dryness':
+                advice = "Dry eyes can be relieved by artificial tears. If symptoms continue, see a specialist.";
+                break;
+            case 'floaters':
+                advice = "Floaters are usually harmless but sudden increase or flashes require immediate medical attention.";
+                break;
+            default:
+                advice = "Please select a symptom from the list.";
+        }
+
+        adviceBox.innerHTML = advice;
+        adviceBox.style.display = 'block';
+    }
+</script>
+{% endblock %}

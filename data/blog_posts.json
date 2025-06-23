@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Importance of Regular Eye Exams",
+    "slug": "importance-of-regular-eye-exams",
+    "date": "2023-06-01",
+    "image": "images/eye_exam.jpg"
+  },
+  {
+    "title": "How to Choose the Right Glasses",
+    "slug": "how-to-choose-the-right-glasses",
+    "date": "2023-06-10",
+    "image": "images/glasses.jpg"
+  },
+  {
+    "title": "Understanding Digital Eye Strain",
+    "slug": "understanding-digital-eye-strain",
+    "date": "2023-06-20",
+    "image": "images/eye_strain.jpg"
+  }
+]

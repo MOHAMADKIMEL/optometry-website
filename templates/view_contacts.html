@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Contact Messages</h2>
+
+{% if contacts %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in contacts %}
+        <tr>
+            <td>{{ c[0] }}</td>
+            <td>{{ c[1] }}</td>
+            <td>{{ c[2] }}</td>
+            <td>{{ c[3] }}</td>
+            <td>{{ c[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No contact messages found.</p>
+{% endif %}
+
+<a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Back to Home</a>
+{% endblock %}

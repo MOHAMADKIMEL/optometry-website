@@ -1,0 +1,157 @@
+/* Root color variables */
+:root {
+    --blue: #002147;       /* Dark Blue */
+    --purple: #6A0DAD;     /* Purple */
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --white: #ffffff;
+    --gray: #6c757d;
+    --gray-light: #e9ecef;
+}
+
+/* Global styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--blue) !important;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: var(--white) !important;
+    font-weight: 600;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--purple) !important;
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--blue);
+    border-color: var(--blue);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--purple);
+    border-color: var(--purple);
+    box-shadow: 0 0 8px var(--purple);
+}
+
+/* Forms */
+form {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    border: 1px solid var(--gray-light);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.3rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--purple);
+    outline: none;
+    box-shadow: 0 0 8px var(--purple);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, var(--blue), var(--purple));
+    color: var(--white);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero h1,
+.hero h2 {
+    margin-bottom: 1rem;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: var(--blue);
+    font-weight: 700;
+}
+
+h3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--blue);
+    color: var(--white);
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+/* Blog Post */
+.blog-post {
+    border-bottom: 1px solid var(--gray);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+.blog-post h3 {
+    color: var(--purple);
+    font-weight: 600;
+}
+
+/* Links */
+a {
+    color: var(--blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--purple);
+    text-decoration: underline;
+    outline: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+}

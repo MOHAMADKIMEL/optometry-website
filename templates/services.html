@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-4">Our Services</h2>
+<ul class="list-unstyled fs-5">
+    <li class="mb-2">👁️ Eye Health Education & Webinars</li>
+    <li class="mb-2">
+        🔍 <a href="{{ url_for('symptom_checker') }}" class="text-primary text-decoration-none">
+            Symptom Checker
+        </a>
+    </li>
+    <li class="mb-2">💻 Online Consultation</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Appointments</h2>
+
+{% if appointments %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Date</th><th>Service</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in appointments %}
+        <tr>
+            <td>{{ a[0] }}</td>
+            <td>{{ a[1] }}</td>
+            <td>{{ a[2] }}</td>
+            <td>{{ a[3] }}</td>
+            <td>{{ a[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No appointments found.</p>
+{% endif %}
+
+<a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Back to Home</a>
+{% endblock %}
