@@ -1,35 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="text-center">
+   
     <img src="{{ url_for('static', filename='logo.png') }}" alt="Clarity Logo" style="max-height: 120px;" class="mb-4">
 
     <h1 class="display-5 fw-bold text-primary">Welcome to Clarity</h1>
+    
+  
     <p class="lead text-secondary">Modern Eyecare for a Clearer Tomorrow</p>
 </div>
+
 
 <hr class="my-5">
 
 <div class="row text-center">
+
     <div class="col-md-4 mb-4">
         <div class="card border-0 shadow-sm h-100">
+          
             <img src="{{ url_for('static', filename='images/education.jpg') }}" class="card-img-top" alt="Education">
+            
             <div class="card-body">
                 <h5 class="card-title text-purple fw-semibold">Eye Health Education & Webinars</h5>
                 <p class="card-text">Stay informed with expert-led sessions on maintaining healthy vision.</p>
             </div>
         </div>
     </div>
+
+
     <div class="col-md-4 mb-4">
         <div class="card border-0 shadow-sm h-100">
             <img src="{{ url_for('static', filename='images/symptom_checker.jpg') }}" class="card-img-top" alt="Symptom Checker">
             <div class="card-body">
                 <h5 class="card-title text-purple fw-semibold">Symptom Checker</h5>
                 <p class="card-text">Quickly understand what your eye symptoms may mean with our smart checker.</p>
+                <!-- Button to go to the symptom checker page -->
                 <a href="{{ url_for('symptom_checker') }}" class="btn btn-primary mt-3">Check Your Symptoms</a>
             </div>
         </div>
     </div>
+
+    
     <div class="col-md-4 mb-4">
         <div class="card border-0 shadow-sm h-100">
             <img src="{{ url_for('static', filename='images/consultation.jpg') }}" class="card-img-top" alt="Online Consultation">
@@ -39,5 +52,7 @@
             </div>
         </div>
     </div>
+
 </div>
-{% endblock %}
+
+{% endblock

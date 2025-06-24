@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl"> <!-- Set language to Dutch -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clarity by Riham Makieh</title>
 
-    <!-- Google Font -->
+    <!-- Google Fonts: Open Sans for typography -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap 5 CSS for responsive design -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Favicon -->
+    <!-- Favicon: Website icon shown in browser tab -->
     <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- Navigation bar (responsive) -->
 <nav class="navbar navbar-expand-lg navbar">
     <div class="container">
+        <!-- Logo and brand name -->
         <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
 <<<<<<< HEAD
           <img src="{{ url_for('static', filename='Logo.PNG') }}" alt="Clarity Logo" style="height: 40px; margin-right: 10px;">
@@ -31,12 +32,17 @@
             Clarity by Riham Makieh
 >>>>>>> 903114f (Update base.html and requirements.txt)
         </a>
+
+        <!-- Toggler button for mobile view -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Navigation links -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                <!-- Each item highlights 'active' if current page matches -->
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
                 </li>
@@ -57,23 +63,23 @@
     </div>
 </nav>
 
-<!-- Optional Hero Section -->
+<!-- Optional hero section (can be defined in child templates) -->
 <div class="container my-5">
     {% block hero %}
     {% endblock %}
 </div>
 
-<!-- Main Content -->
+<!-- Main content block that other templates will override -->
 <div class="container my-5">
     {% block content %}{% endblock %}
 </div>
 
-<!-- Footer -->
+<!-- Footer section -->
 <footer class="footer">
     <p class="mb-0">&copy; {{ 2025 }} Clarity by Riham Makieh | Modern Eyecare for a Clearer Tomorrow</p>
 </footer>
 
-<!-- Bootstrap JS Bundle -->
+<!-- Bootstrap JavaScript bundle (includes Popper.js) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

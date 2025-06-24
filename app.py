@@ -5,8 +5,13 @@ import sqlite3
 
 app = Flask(__name__)
 
-# Initialize the appointments table if it doesn't exist
+# Database initialization
+
 def init_db():
+    """
+    Create the appointments database with a table if it doesn't exist.
+    Also ensures the app can store contact messages.
+    """
     conn = sqlite3.connect('appointments.db')
     c = conn.cursor()
     c.execute('''
@@ -21,8 +26,12 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Load blog posts from JSON and add content from text files
+
 def load_blog_posts():
+    """
+    Load blog metadata from a JSON file and actual blog content
+    from corresponding .txt files in /blog_posts directory.
+    """
     try:
         filepath = os.path.join('data', 'blog_posts.json')
         with open(filepath, 'r') as f:
@@ -40,24 +49,29 @@ def load_blog_posts():
 
     return posts
 
-# Homepage
+
 @app.route('/')
 def home():
+    """Render homepage"""
     return render_template('index.html')
 
-# Services page
 @app.route('/services')
 def services():
+    """Render services page"""
     return render_template('services.html')
 
-# Contact page with form - now stores in contacts table
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    """
+    Handle contact form submission and save to database.
+    Displays thank-you message after successful submission.
+    """
     if request.method == 'POST':
         name = request.form.get("name")
         email = request.form.get("email")
         phone = request.form.get("phone")
         message = request.form.get("message")
+
 
         conn = sqlite3.connect('appointments.db')
         c = conn.cursor()
@@ -70,6 +84,7 @@ def contact():
                 message TEXT
             )
         ''')
+
         c.execute("INSERT INTO contacts (name, email, phone, message) VALUES (?, ?, ?, ?)",
                   (name, email, phone, message))
         conn.commit()
@@ -78,9 +93,12 @@ def contact():
         return render_template("success.html", message="Thank you for your message! We will contact you soon.")
     return render_template("contact.html")
 
-# Appointment booking page
 @app.route('/appointment', methods=['GET', 'POST'])
 def appointment():
+    """
+    Handle appointment booking form and save data to the appointments table.
+    Shows success message after submission.
+    """
     if request.method == 'POST':
         name = request.form.get("name")
         email = request.form.get("email")
@@ -92,7 +110,8 @@ def appointment():
 
         conn = sqlite3.connect('appointments.db')
         c = conn.cursor()
-        # Table is created in init_db() so no need here but okay to keep for safety
+        
+        # Make sure the appointments table exists
         c.execute('''
             CREATE TABLE IF NOT EXISTS appointments (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -110,34 +129,34 @@ def appointment():
         return render_template("success.html", message="Thank you for your appointment! We will contact you soon to confirm the details.")
     return render_template('appointment.html')
 
-# Success message page
 @app.route('/success')
 def success():
+    """Generic success page for form submissions"""
     return render_template('success.html')
 
-# Blog page that loads blog posts
 @app.route('/blog')
 def blog():
+    """List all blog posts using data from JSON and text files"""
     posts = load_blog_posts()
     return render_template('blog.html', posts=posts)
 
-# Individual blog post page
 @app.route('/blog/<slug>')
 def blog_post(slug):
+    """Render a single blog post by slug (filename)"""
     posts = load_blog_posts()
     for post in posts:
         if post['slug'] == slug:
             return render_template('blog_post.html', post=post)
     return "Post not found", 404
 
-# Symptom Checker page
 @app.route('/symptom-checker')
 def symptom_checker():
+    """Placeholder page for a future symptom checker tool"""
     return render_template('symptom_checker.html')
 
-# View appointments page
 @app.route('/view-appointments')
 def view_appointments():
+    """Admin page to view all appointments stored in the database"""
     conn = sqlite3.connect('appointments.db')
     c = conn.cursor()
     c.execute("SELECT id, name, email, date, service FROM appointments")
@@ -145,9 +164,9 @@ def view_appointments():
     conn.close()
     return render_template('view_appointments.html', appointments=appointments)
 
-# View contacts page
 @app.route('/view-contacts')
 def view_contacts():
+    """Admin page to view all contact form submissions"""
     conn = sqlite3.connect('appointments.db')
     c = conn.cursor()
     c.execute("SELECT id, name, email, phone, message FROM contacts")
@@ -156,5 +175,5 @@ def view_contacts():
     return render_template('view_contacts.html', contacts=contacts)
 
 if __name__ == '__main__':
-    init_db()  # Make sure appointments table exists before app runs
-    app.run(debug=True)
+    init_db()  
+    app.run(debug=True)  
